@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.2.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation"
+		value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+
+        
+    <package name="struts2" extends="struts-default,json-default">
+        <action name="rest" class="com.pro.common.PayPalRestAPi" method="execute" >
+            <result name="success" >/WEB-INF/details/pay.jsp</result>
+        </action>
+        <action name="sm" >
+            <result name="success" type="redirect" >dr/login</result>
+        </action>
+        <action name="pdfconvertor" class="com.pro.common.PdfConvertor" method="execute">
+             <result name="success" >/WEB-INF/details/pay1.jsp</result>
+        </action>
+    </package> 
+    
+     <package name="doctor" extends="struts-default,json-default" namespace="dr">
+        <action name="login" class="com.pro.common.PayPalRestAPi" method="execute" >
+            <result name="success" >/WEB-INF/details/pay1.jsp</result>
+        </action>  
+             
+    </package> 
+
+        
+
+        
+    
+    
+   
+</struts>
